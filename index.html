@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nibras Ahamed — Software Developer</title>
+  <meta name="description" content="Portfolio of Nibras Ahamed — Software Developer" />
+  <style>
+    /* ====== Variables ====== */
+    :root{
+      --bg:#f6fbff;
+      --panel: rgba(255,255,255,0.95);
+      --muted:#6b7280;
+      --text:#081125;
+      --accent:#0066ff;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --shadow: 0 12px 30px rgba(6,24,44,0.06);
+      --maxw:1100px;
+      --accent-2:linear-gradient(90deg,#0066ff,#00c2ff);
+      font-family: Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    }
+
+    /* ====== Base ====== */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);}
+    a{color:var(--accent)}
+
+    .wrap{max-width:var(--maxw);margin:36px auto;padding:18px}
+
+    /* subtle decorative background */
+    body::after{
+      content:'';position:fixed;inset:0;background:radial-gradient(circle at 10% 20%, rgba(0,198,255,0.06), transparent 6%), radial-gradient(circle at 90% 80%, rgba(0,102,255,0.04), transparent 8%);pointer-events:none;z-index:0}
+
+    /* ====== Header ====== */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:12px;background:var(--panel);box-shadow:var(--shadow);position:relative;z-index:2}
+    .brand{display:flex;gap:14px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:14px;overflow:hidden;border:4px solid #fff;box-shadow:0 8px 30px rgba(2,6,23,0.12)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .title h1{margin:0;font-size:20px}
+    .title p{margin:2px 0 0;color:var(--muted);font-size:13px}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(0,102,255,0.18)}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(0,102,255,0.12);box-shadow:none}
+
+    /* ====== Layout ====== */
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:22px;margin-top:20px;align-items:start}
+
+    /* Main panel */
+    .panel{background:var(--panel);padding:22px;border-radius:12px;box-shadow:var(--shadow);position:relative;z-index:2}
+
+    h2{margin:0 0 12px 0}
+    p.lead{color:var(--muted);margin:6px 0 0 0}
+
+    /* ====== Skills (progress bars) ====== */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .skill{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff, #fbfdff);border:1px solid rgba(3,10,34,0.03)}
+    .skill .label{display:flex;justify-content:space-between;font-weight:700}
+    .bar{height:10px;background:#e8f2ff;border-radius:999px;margin-top:8px;overflow:hidden}
+    .bar > i{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width 1s cubic-bezier(.2,.9,.3,1)}
+
+    /* utility classes for widths (can adjust) */
+    .w-90 .bar > i{width:90%}
+    .w-80 .bar > i{width:80%}
+    .w-75 .bar > i{width:75%}
+    .w-70 .bar > i{width:70%}
+    .w-60 .bar > i{width:60%}
+
+    /* ====== Projects list with cards and image mock */
+    .projects-list{display:flex;flex-direction:column;gap:14px}
+    .proj{display:flex;gap:14px;align-items:center;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(3,10,34,0.03)}
+    .proj .thumb{width:110px;height:70px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#e6f4ff,#fff);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+    .proj .meta h3{margin:0;font-size:16px}
+    .proj .meta p{margin:6px 0 0 0;color:var(--muted);font-size:14px}
+    .proj .meta .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:linear-gradient(90deg,#eef8ff,#ffffff);color:var(--accent);font-weight:700;border:1px solid rgba(0,102,255,0.06)}
+
+    /* ====== Education timeline ====== */
+    .edu-list{display:flex;flex-direction:column;gap:12px}
+    .edu{padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(3,10,34,0.03)}
+    .edu small{display:block;color:var(--muted);margin-top:6px}
+
+    /* ====== Sidebar ====== */
+    aside .card{padding:18px;border-radius:12px}
+    .contact-row{display:flex;flex-direction:column;gap:8px}
+    .contact-row a{display:block;padding:10px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(3,10,34,0.03);text-decoration:none;color:var(--text);font-weight:700}
+
+    .skills-soft{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+    .soft{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(3,10,34,0.03)}
+    .soft svg{opacity:0.7}
+
+    /* ====== Print friendly ====== */
+    @media print{
+      body{background:white}
+      .wrap{box-shadow:none}
+      header,aside{display:none}
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column;gap:12px;align-items:flex-start}
+      .cta-row{width:100%;justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="avatar"><img src="D:\portfo\09db9dcd-c910-4456-ab4c-c17c16cc5943.jpg" alt="Nibras photo" /></div>
+        <div class="title">
+          <h1>Nibras Ahamed</h1>
+          <p>Software Developer</p>
+          <p style="color:var(--muted);font-size:13px;margin-top:6px">Chennai, TN • nibrasahamed2003@gmail.com • +91 9952734316</p>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn ghost" href="#education">Education</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="panel">
+          <h2>Skills</h2>
+          <p class="lead">Technical skills and competencies — quick visual indicator of proficiency.</p>
+
+          <div class="skills-grid" style="margin-top:16px">
+            <div class="skill w-90">
+              <div class="label">java core <span style="color:var(--muted)">Proficient</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="skill w-80">
+              <div class="label"> database(MySQL) <span style="color:var(--muted)">Proficient</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="skill w-75">
+              <div class="label">JavaScript <span style="color:var(--muted)">Intermediate</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="skill w-70">
+              <div class="label">dataStructure and algorithms <span style="color:var(--muted)">Intermediate</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="skill w-80">
+              <div class="label">HTML & CSS <span style="color:var(--muted)">Proficient</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+            <div class="skill w-60">
+              <div class="label">DBMS <span style="color:var(--muted)">Proficient</span></div>
+              <div class="bar"><i></i></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:18px">
+          <h2 id="projects">Projects</h2>
+          <p class="lead">Selected projects from coursework and personal builds.</p>
+
+          <div class="projects-list" style="margin-top:12px">
+            <article class="proj">
+              <div class="thumb">JS</div>
+              <div class="meta">
+                <h3>Java Based Mini eCommerce</h3>
+                <p>Mini online shopping website with user/admin flows built using Java Swing and MySQL (JDBC).</p>
+                <div class="tags"><span class="tag">Java</span><span class="tag">MySQL</span><span class="tag">JDBC</span></div>
+              </div>
+            </article>
+
+           
+
+            <article class="proj">
+              <div class="thumb">PF</div>
+              <div class="meta">
+                <h3>Portfolio Website</h3>
+                <p>Personal portfolio showcasing projects, skills, and resume with a clean, printable layout.</p>
+                <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:18px">
+          <h2 id="education">Education</h2>
+          <div class="edu-list" style="margin-top:12px">
+            <div class="edu">
+              <strong>Master’s in Computer Application (MCA)</strong>
+              <small>Mohamed Sathak Arts and Science College — 2024 - 2026 (Present)</small>
+              
+            </div>
+
+            <div class="edu">
+              <strong>Bachelor of Computer Application (BCA)</strong>
+              <small>Syed Ammal Arts and Science College — Graduated  2021-2024</small>
+             
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <div class="panel card">
+          <h3>Contact</h3>
+          <div class="contact-row" style="margin-top:8px">
+            <a href="mailto:nibrasahamed2003@gmail.com">nibrasahamed2003@gmail.com</a>
+            <a href="tel:+919952734316">+91 9952734316</a>
+            <a href="https://linkedin.com/in/nibras-ahamed-60a180284" target="_blank">LinkedIn / nibras-ahamed</a>
+          </div>
+
+          <h3 style="margin-top:16px">Strengths & Soft Skills</h3>
+          <div class="skills-soft">
+            <div class="soft">💬 Communication</div>
+            <div class="soft">🧠 Problem Solving</div>
+            <div class="soft">🔎 Attention to Detail</div>
+            <div class="soft">🔁 Critical Thinking</div>
+          </div>
+
+          <h3 style="margin-top:16px">Extras</h3>
+          <p style="color:var(--muted);margin:8px 0">Volunteered in CSR, LeetCode performer, active GitHub contributor.</p>
+
+         
+        </div>
+      </aside>
+    </div>
+
+    <footer style="margin-top:18px;text-align:center;color:var(--muted)">
+      
+    </footer>
+  </div>
+</body>
+</html>
